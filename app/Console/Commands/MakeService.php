@@ -43,6 +43,7 @@ namespace App\Services;
 
 class {$serviceName} extends BaseService
 {
+
 }
 EOT;
     }

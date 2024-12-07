@@ -53,8 +53,7 @@ class {$name}Repository extends BaseRepository implements {$name}RepositoryInter
     }
 
     protected \$fieldSearchable = [
-        'name' => 'like',
-        'id'
+
     ];
 }
 EOT;
@@ -116,9 +115,7 @@ class {$name}Transformer extends TransformerAbstract
     public function transform({$name} \$model): array
     {
         return [
-            'id' => (int) \$model->id,
-            'name' => \$model->name,
-            'username' => \$model->username,
+
         ];
     }
 }

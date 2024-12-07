@@ -66,7 +66,12 @@ class RoleService extends BaseService
         return $this->show($role_updated);
     }
 
-    public function delete(Role $user)
+    public function restore($id)
+    {
+
+    }
+
+    public function delete(Role $user): ?bool
     {
         return $user->delete();
     }
@@ -77,7 +82,7 @@ class RoleService extends BaseService
     }
 
 
-    protected function syncPermission(Role $role, array $permissions = [])
+    protected function syncPermission(Role $role, array $permissions = []): void
     {
       DB::table('permission_role')->where('role_id', $role->id)->delete();
 

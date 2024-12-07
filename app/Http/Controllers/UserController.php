@@ -49,6 +49,13 @@ class UserController extends ApiController
 
         return $this->errorResponse('Invalid data', ResponseAlias::HTTP_UNPROCESSABLE_ENTITY, $request->errors());
     }
+    public function restore($id)
+    {
+        if($this->service->restore($id)){
+            return $this->successResponse($this->service->restore($id));
+        }
+        return $this->errorResponse('Invalid data', ResponseAlias::HTTP_UNPROCESSABLE_ENTITY);
+    }
 
     public function destroy(User $user)
     {

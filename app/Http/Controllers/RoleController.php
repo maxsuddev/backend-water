@@ -61,6 +61,8 @@ class RoleController extends ApiController
         return $this->errorResponse('Invalid data', ResponseAlias::HTTP_UNPROCESSABLE_ENTITY, $request->errors());
     }
 
+
+
     /**
      * Remove the specified resource from storage.
      */

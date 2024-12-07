@@ -36,7 +36,6 @@ class RoleTransformer extends TransformerAbstract
                 'id' => (int) $permission->id,
                 'name' => $permission->name,
                 'slug' => $permission->slug,
-
             ];
         })->toArray();
     }

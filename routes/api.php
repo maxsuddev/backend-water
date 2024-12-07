@@ -24,12 +24,14 @@ Route::group(['middleware' => [ApiAuthMiddleware::class]],static function () {
         Route::post('/logout', [AuthController::class,'logout']);
     });
 
-    Route::group(['prefix' => 'users', 'as' => 'users.','controller' => UserController::class],static function () {
+    Route::group(['prefix' => 'users', 'as' => 'users.','controller' =>  UserController::class],static function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{user}', 'show')->name('show');
         Route::post('/','store')->name('store');
         Route::match(['put','patch'],'/{user}','update')->name('update');
+        Route::match(['put','patch'],'/{id}/restore','restore')->name('restore');
         Route::delete('/{user}','destroy')->name('destroy');
+        Route::delete('/{user}/force-delete','forceDelete')->name('forceDelete');
     });
 
     Route::group(['prefix' => 'roles', 'as' => 'roles.','controller' => RoleController::class],static function () {

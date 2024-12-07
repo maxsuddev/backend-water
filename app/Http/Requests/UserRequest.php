@@ -18,22 +18,27 @@ class UserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         $user = $this->route('user');
-
         return match ($this->route()?->getName()) {
+
             'users.store' => [
                 'name' => ['required', 'string', 'max:150'],
                 'username' => ['required', 'string', 'min:4', 'max:32', 'unique:users'],
-                'password' => ['required', 'string', 'min:4', 'max:16']
+                'password' => ['required', 'string', 'min:4', 'max:16'],
+                'roles' => ['required', 'array', 'distinct'],
+                'roles.*' => ['exists:roles,id']
+
             ],
             'users.update' => [
                 'name' => ['required', 'string', 'max:150'],
                 'username' => ['required', 'string', 'min:4', 'max:32', 'unique:users,username,' . $user->id],
-                'password' => ['sometimes', 'string', 'min:4', 'max:16']
+                'password' => ['sometimes', 'string', 'min:4', 'max:16'],
+                'roles' => ['required', 'array',  'distinct'],
+                'roles.*' => ['exists:roles,id']
             ],
             default => []
         };

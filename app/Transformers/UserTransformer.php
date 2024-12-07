@@ -25,6 +25,21 @@ class UserTransformer extends TransformerAbstract
             'id'         => (int) $model->id,
             'username'  => $model->username,
             'name'  => $model->name,
+            'roles' => $this->transformRoles($model->roles),
         ];
     }
+
+    protected function transformRoles($roles): array
+    {
+        return $roles->map(function ($role) {
+            return [
+                'id' => (int) $role->id,
+                'name' => $role->name,
+                'slug' => $role->slug,
+
+            ];
+        })->toArray();
+    }
+
+
 }
