@@ -77,6 +77,7 @@ class UserService extends BaseService
 
     public function forceDelete(User $user): ?bool
     {
+
         return $user->forceDelete();
     }
     protected function syncRole(User $user, array $roles = [])
