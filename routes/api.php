@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ApiAuthMiddleware;
 use App\Models\Role;
@@ -50,7 +53,31 @@ Route::group(['middleware' => [ApiAuthMiddleware::class]],static function () {
         Route::post('/','store')->name('store');
         Route::match(['put','patch'],'/{category}','update')->name('update');
         Route::delete('/{category}','destroy')->name('destroy');
+    });
 
+    Route::group(['prefix' => 'products', 'as' => 'products.','controller' => ProductController::class ],static function () {
+       Route::get('/', 'index')->name('index');
+       Route::get('/{product}', 'show')->name('show');
+       Route::post('/','store')->name('store');
+       Route::match(['put','patch'],'/{product}','update')->name('update');
+       Route::delete('/{product}','destroy')->name('destroy');
+    });
+
+
+    Route::group(['prefix' => 'sizes', 'as' => 'sizes.','controller' => SizeController::class ],static function () {
+       Route::get('/', 'index')->name('index');
+       Route::get('/{size}', 'show')->name('show');
+       Route::post('/','store')->name('store');
+       Route::match(['put','patch'],'/{size}','update')->name('update');
+       Route::delete('/{size}','destroy')->name('destroy');
+    });
+
+    Route::group(['prefix' => 'variants', 'as' => 'variants.', 'controller' => ProductVariantController::class ],static function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{variant}', 'show')->name('show');
+        Route::post('/','store')->name('store');
+        Route::match(['put','patch'],'/{variant}','update')->name('update');
+        Route::delete('/{variant}','destroy')->name('destroy');
     });
 
 

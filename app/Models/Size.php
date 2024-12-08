@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model
+class Size extends Model
 {
-    protected $table = 'categories';
-
+    protected $table = 'sizes';
     protected $fillable = [
         'name',
-        'description'
     ];
 
-    public function products(): HasMany
+    public function productVariants(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(ProductVariant::class);
     }
 }
