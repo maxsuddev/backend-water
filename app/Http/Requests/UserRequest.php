@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTOs\UserDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -68,4 +69,5 @@ class UserRequest extends FormRequest
             'password.max' => 'Parol maksimal :max belgidan iborat bo\'lishi mumkin.',
         ];
     }
+
 }

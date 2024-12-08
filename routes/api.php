@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ApiAuthMiddleware;
@@ -40,6 +41,16 @@ Route::group(['middleware' => [ApiAuthMiddleware::class]],static function () {
         Route::post('/','store')->name('store');
         Route::match(['put','patch'],'/{role}','update')->name('update');
         Route::delete('/{role}','destroy')->name('destroy');
+    });
+
+
+    Route::group(['prefix' => 'categories', 'as' => 'categories.','controller' => CategoryController::class ],static function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{category}', 'show')->name('show');
+        Route::post('/','store')->name('store');
+        Route::match(['put','patch'],'/{category}','update')->name('update');
+        Route::delete('/{category}','destroy')->name('destroy');
+
     });
 
 

@@ -12,7 +12,7 @@ class CategoryTransformer extends TransformerAbstract
         return [
             'id' => (int) $model->id,
             'name' => $model->name,
-            'username' => $model->username,
+            'description' => $model->description,
         ];
     }
 }

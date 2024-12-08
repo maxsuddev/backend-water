@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Presenters\CategoryPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
 {
@@ -14,6 +15,9 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return Category::class;
     }
 
+    /**
+     * @throws RepositoryException
+     */
     public function boot(): void
     {
         $this->pushCriteria(app(RequestCriteria::class));
