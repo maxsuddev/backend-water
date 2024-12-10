@@ -4,7 +4,7 @@ namespace App\Services;
 
 
 use App\Models\ProductVariant;
-use App\Repositories\Product\ProductRepository;
+use App\Repositories\ProductVariant\ProductVariantRepository;
 use App\Transformers\ProductVariantTransformer;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Log\Logger;
@@ -13,12 +13,12 @@ use League\Fractal\Resource\Item;
 
 class ProductVariantService extends BaseService
 {
-    public function __construct(DatabaseManager $databaseManager, Logger $logger, ProductRepository $repository)
+    public function __construct(DatabaseManager $databaseManager, Logger $logger, ProductVariantRepository $repository)
     {
         parent::__construct($databaseManager, $logger, $repository);
     }
 
-    public function all(): ?array
+    public function all(): array
     {
         return $this->formatData($this->repository->paginate(), 'variants');
     }

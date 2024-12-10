@@ -11,6 +11,7 @@ class ProductVariant extends Model
     protected $fillable = [
         'product_id',
         'size_id',
+        'sku'
     ];
 
     public function size(): BelongsTo

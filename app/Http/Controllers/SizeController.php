@@ -68,7 +68,7 @@ class SizeController extends ApiController
     {
         $this->sizeService->delete($size);
         return $this->successResponse([
-            'message' => 'Size deleted successfully',
+
         ]);
     }
 }

@@ -38,6 +38,7 @@ class SizeService extends BaseService
     {
         return $this->runInTransaction(function () use ($data) {
            $size = $this->repository->skipPresenter()->create($data);
+           return $this->show($size);
         });
     }
 

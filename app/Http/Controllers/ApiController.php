@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Message;
 use Illuminate\Http\JsonResponse;
 
 class ApiController extends Controller
@@ -11,11 +12,11 @@ class ApiController extends Controller
         return response()->json($data, $status);
     }
 
-    protected function successResponse(array $data, int $code = 200): JsonResponse
+    protected function successResponse(array $data,  int $code = 200): JsonResponse
     {
-        $thedata = ['ok' => true] + $data;
+        $theData = ['ok' => true, 'message' => 'The operation was completed successfully.'] + $data;
 
-       return $this->jsonResponse($thedata,$code);
+       return $this->jsonResponse($theData,$code);
     }
 
     protected function errorResponse($message, $status, $errors = []): JsonResponse

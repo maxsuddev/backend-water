@@ -21,7 +21,7 @@ class ProductVariantController extends ApiController
      */
     public function index()
     {
-     $this->successResponse($this->productVariantService->all(), ResponseAlias::HTTP_OK);
+    return $this->successResponse($this->productVariantService->all(), ResponseAlias::HTTP_OK);
     }
 
 

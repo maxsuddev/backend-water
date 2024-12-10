@@ -10,8 +10,10 @@ class ProductVariantTransformer extends TransformerAbstract
     public function transform(ProductVariant $model): array
     {
         return [
-            'product_id' => app(ProductTransformer::class )->transform($model->product),
-            'size_id' => app(SizeTransformer::class )->transform($model->size)
+            'id' => $model->id,
+            'product' => app(ProductTransformer::class )->transform($model->product),
+            'size' => app(SizeTransformer::class )->transform($model->size),
+            'sku' => $model->sku,
         ];
     }
 }

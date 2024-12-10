@@ -6,6 +6,7 @@ use App\Models\ProductVariant;
 use App\Presenters\ProductVariantPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class ProductVariantRepository extends BaseRepository implements ProductVariantRepositoryInterface
 {
@@ -14,6 +15,9 @@ class ProductVariantRepository extends BaseRepository implements ProductVariantR
         return ProductVariant::class;
     }
 
+    /**
+     * @throws RepositoryException
+     */
     public function boot(): void
     {
         $this->pushCriteria(app(RequestCriteria::class));
